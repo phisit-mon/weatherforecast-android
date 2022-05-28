@@ -15,6 +15,9 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_KEY", '"538fc5ea8671037e7048016f7bf4ec3f"'
+        buildConfigField "String", "API_URL", '"https://api.openweathermap.org"'
     }
 
     buildTypes {
@@ -29,6 +32,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -90,4 +97,6 @@ dependencies {
     // Koin Test
     testImplementation "io.insert-koin:koin-test:$koin_version"
     testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
+
+    implementation 'com.jakewharton.timber:timber:5.0.1'
 }
