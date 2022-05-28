@@ -21,7 +21,7 @@ object NetworkProvider {
         }
         return OkHttpClient.Builder()
             .addInterceptor(httpLogging)
-            .addInterceptor(OpenWeatherInterceptor())
+            .addInterceptor(WeatherInterceptor())
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
