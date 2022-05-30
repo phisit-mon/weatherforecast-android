@@ -37,6 +37,12 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -46,6 +52,7 @@ dependencies {
     def activity_version = "1.4.0"
     def koin_version = "3.2.0"
     def multidex_version = "2.0.1"
+    def coroutine_version = "1.6.1"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -70,8 +77,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
 
     // Android
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
@@ -99,4 +107,10 @@ dependencies {
     testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
 
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    testImplementation "io.mockk:mockk:1.12.4"
+    testImplementation "io.mockk:mockk-agent-jvm:1.12.4"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 }
