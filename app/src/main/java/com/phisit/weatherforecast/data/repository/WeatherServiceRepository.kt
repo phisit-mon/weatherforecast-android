@@ -37,10 +37,11 @@ class WeatherServiceRepositoryImpl(
     override fun getForecastWeather(
         lat: Double,
         lon: Double,
-        exclude: String
+        exclude: String,
+        unitsOfTemp: String
     ): Flow<ResultResponse<WeatherModel>> {
         return flow {
-            weatherServiceInterface.getForecastWeather(lat, lon, exclude).let {
+            weatherServiceInterface.getForecastWeather(lat, lon, exclude, unitsOfTemp).let {
                 val body = it.body()
                 val result = if (it.isSuccessful && body != null) {
                     Success(body)

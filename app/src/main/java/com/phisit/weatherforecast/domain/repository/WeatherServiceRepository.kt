@@ -10,6 +10,7 @@ interface WeatherServiceRepository {
     fun getForecastWeather(
         lat: Double,
         lon: Double,
-        exclude: String
+        exclude: String,
+        unitsOfTemp: String
     ): Flow<ResultResponse<WeatherModel>>
 }

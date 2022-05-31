@@ -116,14 +116,16 @@ class WeatherServiceRepositoryTest {
                 weatherServiceInterface.getForecastWeather(
                     lat = any(),
                     lon = any(),
-                    exclude = any()
+                    exclude = any(),
+                    unitsOfTemp = any()
                 )
             }.returns(Response.success(mockupWeatherModel))
 
             val result = weatherServiceRepository.getForecastWeather(
                 lat = 78.0,
                 lon = 99.9,
-                exclude = "current,minutely"
+                exclude = "current,minutely",
+                unitsOfTemp = "imperial"
             )
                 .first()
 
@@ -135,21 +137,23 @@ class WeatherServiceRepositoryTest {
         }
 
     @Test
-    fun `Get WeatherForecast when api return success but body's null should Failure with NetworkException_Failure`() =
+    fun `Get WeatherForecast when API return success but body's null should Failure with NetworkException_ResponseNull`() =
         runTest {
 
             coEvery {
                 weatherServiceInterface.getForecastWeather(
                     lat = any(),
                     lon = any(),
-                    exclude = any()
+                    exclude = any(),
+                    unitsOfTemp = any()
                 )
             }.returns(Response.success(null))
 
             val result = weatherServiceRepository.getForecastWeather(
                 lat = 78.0,
                 lon = 99.9,
-                exclude = "current,minutely"
+                exclude = "current,minutely",
+                unitsOfTemp = "imperial"
             ).first() as? Failure
 
             assertNotNull(result)
@@ -160,21 +164,23 @@ class WeatherServiceRepositoryTest {
         }
 
     @Test
-    fun `Get WeatherForecast when api return 500 should Failure with NetworkException_InternalServerError`() =
+    fun `Get WeatherForecast when API return 500 should Failure with NetworkException_InternalServerError`() =
         runTest {
 
             coEvery {
                 weatherServiceInterface.getForecastWeather(
                     lat = any(),
                     lon = any(),
-                    exclude = any()
+                    exclude = any(),
+                    unitsOfTemp = any()
                 )
             }.returns(Response.error(500, byteArrayOf().toResponseBody()))
 
             val result = weatherServiceRepository.getForecastWeather(
                 lat = 78.0,
                 lon = 99.9,
-                exclude = "current,minutely"
+                exclude = "current,minutely",
+                "imperial"
             ).first() as? Failure
 
             assertNotNull(result)

@@ -6,7 +6,6 @@ import com.phisit.weatherforecast.domain.repository.WeatherServiceRepository
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
@@ -16,7 +15,6 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class GetGeocodingUseCaseTest {
 
     private val weatherServiceRepository: WeatherServiceRepository = mockk()

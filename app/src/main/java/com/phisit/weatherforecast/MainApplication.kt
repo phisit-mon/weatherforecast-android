@@ -2,6 +2,7 @@ package com.phisit.weatherforecast
 
 import android.app.Application
 import com.phisit.weatherforecast.di.networkModule
+import com.phisit.weatherforecast.di.weatherModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -21,7 +22,7 @@ class MainApplication: Application() {
             androidContext(applicationContext)
             androidLogger()
             modules(
-                listOf(networkModule)
+                listOf(networkModule, weatherModule)
             )
         }
 
