@@ -7,6 +7,9 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.phisit.weatherforecast.R
+import com.phisit.weatherforecast.common.core.Constants
+import com.phisit.weatherforecast.common.core.StringFormatUtils.toKiloMeter
+import com.phisit.weatherforecast.common.core.StringFormatUtils.toPercentageString
 import com.phisit.weatherforecast.common.core.view.viewBinding
 import com.phisit.weatherforecast.databinding.FragmentHomeBinding
 import com.phisit.weatherforecast.domain.model.CurrentModel
@@ -35,8 +38,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.searchImageView.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_search)
         }
+
         binding.dailyTextView.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_today)
+        }
+
+        binding.toggleTemp.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            if (isChecked) {
+                if (checkedId == binding.celsiusButton.id) {
+                    viewModel.setUnitsOfTemp(Constants.TEMP_UNIT_C)
+                } else {
+                    viewModel.setUnitsOfTemp(Constants.TEMP_UNIT_F)
+                }
+            }
         }
     }
 
@@ -69,12 +83,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setWeatherToView(current: CurrentModel) {
+        val tempUnit = binding.toggleTemp.checkedButtonId.let {
+            if (it == binding.celsiusButton.id) "C" else "F"
+        }
         current.apply {
-            binding.weatherViewGroup.humidityTextView.text = humidity.toString()
-            binding.weatherViewGroup.precipitationTextView.text = dewPoint.toString()
-            binding.weatherViewGroup.windTextView.text = windSpeed.toString()
+            binding.weatherViewGroup.humidityTextView.text = humidity.toPercentageString()
+            binding.weatherViewGroup.precipitationTextView.text = dewPoint.toPercentageString()
+            binding.weatherViewGroup.windTextView.text = windSpeed.toKiloMeter()
             binding.feelingTextView.text = weather.firstOrNull()?.description.orEmpty()
-            binding.tempTextView.text = temp.toString()
+            binding.tempTextView.text = temp.toString() + tempUnit
         }
     }
 }

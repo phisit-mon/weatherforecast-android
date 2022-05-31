@@ -108,14 +108,14 @@ class WeatherServiceRepositoryImpl(
         return current?.let { it ->
             CurrentModel(
                 clouds = it.clouds,
-                dewPoint = it.dewPoint,
+                dewPoint = it.dewPoint.toInt(),
                 dt = it.dt,
                 feelsLike = it.feelsLike,
                 humidity = it.humidity,
                 pressure = it.pressure,
                 sunrise = it.sunrise,
                 sunset = it.sunset,
-                temp = it.temp,
+                temp = it.temp.toInt(),
                 uvi = it.uvi,
                 visibility = it.visibility,
                 weather = it.weather.map(::transformToWeatherDetailResponseModel),
