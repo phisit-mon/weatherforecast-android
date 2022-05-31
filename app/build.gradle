@@ -52,7 +52,7 @@ dependencies {
     def activity_version = "1.4.0"
     def koin_version = "3.2.0"
     def multidex_version = "2.0.1"
-    def coroutine_version = "1.6.1"
+    def coroutine_version = "1.6.2"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -113,4 +113,7 @@ dependencies {
 
     testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
+    //LiveData Testing
+    testImplementation 'com.jraska.livedata:testing-ktx:1.2.0'
 }
