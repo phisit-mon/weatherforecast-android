@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">WeatherForecast</string>
+
+    <string name="daily_forecast">Today\'s weather</string>
+    <string name="additional_info">Additional Info</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="humidity">Humidity</string>
+    <string name="windy">Windy</string>
 </resources>

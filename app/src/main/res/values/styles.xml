@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text">
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Header 1 -->
+    <style name="Text.Header1">
+        <item name="android:textSize">32sp</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <style name="Text.Header1.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Header1.Bold.DarkGreen">
+        <item name="android:textColor">@color/dark_green</item>
+    </style>
+
+    <!-- Header 2 -->
+    <style name="Text.Header2">
+        <item name="android:textSize">24sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <!-- Header 3 -->
+    <style name="Text.Header3">
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="Text.Header3.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Header3.Bold.DarkGreen">
+        <item name="android:textColor">@color/dark_green</item>
+    </style>
+
+    <!-- BODY -->
+    <style name="Text.Body">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+
+    <style name="Text.Body.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Body.Bold.LightBlue">
+        <item name="android:textColor">@color/light_blue</item>
+    </style>
+
+    <style name="Text.Body.Bold.DarkGreen">
+        <item name="android:textColor">@color/dark_green</item>
+    </style>
+
+
+    <!-- SMALL -->
+    <style name="Text.Small">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <!-- Extra Small -->
+    <style name="Text.ExtraSmall">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="Text.ExtraSmall.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.ExtraSmall.Bold.LightBlue">
+        <item name="android:textColor">@color/light_blue</item>
+    </style>
+
+</resources>
