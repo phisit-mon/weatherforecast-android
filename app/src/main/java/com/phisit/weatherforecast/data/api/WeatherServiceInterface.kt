@@ -19,6 +19,7 @@ interface WeatherServiceInterface {
     suspend fun getForecastWeather(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
-        @Query("exclude") exclude: String
+        @Query("exclude") exclude: String,
+        @Query("units") unitsOfTemp: String
     ): Response<WeatherResponseModel>
 }

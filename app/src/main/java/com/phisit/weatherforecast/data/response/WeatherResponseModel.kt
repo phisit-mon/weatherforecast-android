@@ -35,7 +35,7 @@ data class CurrentResponseModel(
     @SerializedName("temp")
     val temp: Double = 0.0,
     @SerializedName("uvi")
-    val uvi: Int = 0,
+    val uvi: Double = 0.0,
     @SerializedName("visibility")
     val visibility: Int = 0,
     @SerializedName("weather")
