@@ -26,9 +26,6 @@ import org.junit.jupiter.api.extension.RegisterExtension
 
 @ExtendWith(TaskExecutorExtension::class)
 class HomeViewModelTest {
-    @Rule
-    val instantTaskRule = InstantTaskExecutorRule()
-
     @RegisterExtension
     @JvmField
     val dispatcher = TestCoroutinesExtension()

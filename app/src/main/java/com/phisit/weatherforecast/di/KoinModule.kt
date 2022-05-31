@@ -12,6 +12,7 @@ import com.phisit.weatherforecast.domain.usecase.GetGeocodingUseCase
 import com.phisit.weatherforecast.domain.usecase.GetGeocodingUseCaseImpl
 import com.phisit.weatherforecast.network.NetworkProvider
 import com.phisit.weatherforecast.presentation.home.HomeViewModel
+import com.phisit.weatherforecast.presentation.search.SearchViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -54,6 +55,12 @@ val weatherModule = module {
             getGeocodingUseCase = get(),
             getForecastWeatherUseCase = get(),
             coroutineDispatcherProvider = get()
+        )
+    }
+
+    viewModel {
+        SearchViewModel(
+            getGeocodingUseCase = get()
         )
     }
 }

@@ -11,7 +11,8 @@ interface WeatherServiceInterface {
     @WorkerThread
     @GET("/geo/1.0/direct")
     suspend fun getDirectGeocoding(
-        @Query("q") city: String
+        @Query("q") city: String,
+        @Query("limit") limit: Int = 30
     ): Response<ArrayList<GeocodingResponseModel>>
 
     @WorkerThread

@@ -32,6 +32,9 @@ class HomeViewModel(
     var unitsOfTemp = Constants.TEMP_UNIT_C
         private set
 
+    private val currentCity: String
+        get() = geocodingLiveData.value?.name ?: DEFAULT_CITY
+
     fun getGeocodingLiveData(): LiveData<GeocodingModel> = geocodingLiveData
     fun getWeatherLiveData(): LiveData<CurrentModel> = weatherLiveData
 
@@ -39,7 +42,7 @@ class HomeViewModel(
         getForecastWeather(geoCoding.lat, geoCoding.lon)
     }
 
-    fun getGeocoding(city: String = DEFAULT_CITY) {
+    fun getGeocoding(city: String = currentCity) {
         getGeocodingUseCase(city)
             .flowOn(coroutineDispatcherProvider.io())
             .catch { error ->

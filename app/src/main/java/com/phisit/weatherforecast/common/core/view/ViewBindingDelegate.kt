@@ -1,4 +1,4 @@
-package com.phisit.weatherforecast.common.core
+package com.phisit.weatherforecast.common.core.view
 
 import android.view.LayoutInflater
 import android.view.View

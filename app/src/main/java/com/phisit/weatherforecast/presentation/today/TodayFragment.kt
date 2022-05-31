@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.phisit.weatherforecast.R
-import com.phisit.weatherforecast.common.core.viewBinding
+import com.phisit.weatherforecast.common.core.view.viewBinding
 import com.phisit.weatherforecast.databinding.FragmentTodayBinding
 
 class TodayFragment : Fragment(R.layout.fragment_today) {
