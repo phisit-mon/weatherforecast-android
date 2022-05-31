@@ -1,4 +1,4 @@
-package com.phisit.weatherforecast
+package com.phisit.weatherforecast.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
