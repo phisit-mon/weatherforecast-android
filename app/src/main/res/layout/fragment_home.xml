@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="16dp"
     android:background="@color/light_gray">
 
@@ -60,66 +59,14 @@
         app:layout_constraintEnd_toStartOf="@id/searchImageView"
         app:layout_constraintTop_toTopOf="@id/searchImageView" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/cityNameTextView"
-        style="@style/Text.Header1.Bold.DarkGreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toggleTemp"
-        android:text="New York," />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/stateNameTextView"
-        style="@style/Text.Header1.Bold.DarkGreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="@id/cityNameTextView"
-        app:layout_constraintTop_toBottomOf="@id/cityNameTextView"
-        android:text="US" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/dateTextView"
-        style="@style/Text.Header3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="@id/stateNameTextView"
-        app:layout_constraintTop_toBottomOf="@id/stateNameTextView"
-        android:text="Oct 04, 2022" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/feelingTextView"
-        style="@style/Text.Body.Bold.LightBlue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="@id/dateTextView"
-        app:layout_constraintTop_toBottomOf="@id/dateTextView"
-        android:text="Cloudy" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tempTextView"
-        style="@style/Text.Header1.Bold.DarkGreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="@id/toggleTemp"
-        android:textSize="44sp"
-        app:layout_constraintTop_toTopOf="@id/cityNameTextView"
-        app:layout_constraintBottom_toBottomOf="@id/feelingTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="79C" />
-
     <include
         android:id="@+id/weatherViewGroup"
-        layout="@layout/weather_group_view"
-        android:layout_width="0dp"
+        layout="@layout/layout_wether_group_view"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feelingTextView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toggleTemp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,8 @@ import com.phisit.weatherforecast.common.core.StringFormatUtils.toKiloMeter
 import com.phisit.weatherforecast.common.core.StringFormatUtils.toPercentageString
 import com.phisit.weatherforecast.common.core.view.viewBinding
 import com.phisit.weatherforecast.databinding.FragmentHomeBinding
+import com.phisit.weatherforecast.databinding.LayoutInfoGroupViewBinding
+import com.phisit.weatherforecast.databinding.LayoutWetherGroupViewBinding
 import com.phisit.weatherforecast.domain.model.CurrentModel
 import com.phisit.weatherforecast.domain.model.GeocodingModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,6 +22,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val binding: FragmentHomeBinding by viewBinding(FragmentHomeBinding::bind)
+    private val weatherViewGroup: LayoutWetherGroupViewBinding
+        get() = binding.weatherViewGroup
+    private val infoViewGroup: LayoutInfoGroupViewBinding
+        get() = binding.weatherViewGroup.infoViewGroup
 
     private val viewModel: HomeViewModel by viewModel()
 
@@ -78,8 +84,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setGeocodingToView(geocodingModel: GeocodingModel) {
         geocodingModel.apply {
-            binding.cityNameTextView.text = name
-            binding.stateNameTextView.text = country
+            weatherViewGroup.cityNameTextView.text = name
+            weatherViewGroup.stateNameTextView.text = country
         }
     }
 
@@ -89,11 +95,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             if (it == binding.celsiusButton.id) "C" else "F"
         }
         current.apply {
-            binding.weatherViewGroup.humidityTextView.text = humidity.toPercentageString()
-            binding.weatherViewGroup.precipitationTextView.text = dewPoint.toPercentageString()
-            binding.weatherViewGroup.windTextView.text = windSpeed.toKiloMeter()
-            binding.feelingTextView.text = weather.firstOrNull()?.description.orEmpty()
-            binding.tempTextView.text = temp.toString() + tempUnit
+            infoViewGroup.humidityTextView.text = humidity.toPercentageString()
+            infoViewGroup.precipitationTextView.text = dewPoint.toPercentageString()
+            infoViewGroup.windTextView.text = windSpeed.toKiloMeter()
+            weatherViewGroup.feelingTextView.text = weather.firstOrNull()?.description.orEmpty()
+            weatherViewGroup.tempTextView.text = temp.toString() + tempUnit
         }
     }
 }
