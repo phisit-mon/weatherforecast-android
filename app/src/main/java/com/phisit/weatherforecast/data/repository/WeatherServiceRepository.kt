@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 
-
 class WeatherServiceRepositoryImpl(
     private val weatherServiceInterface: WeatherServiceInterface
 ) : WeatherServiceRepository {
@@ -111,14 +110,8 @@ class WeatherServiceRepositoryImpl(
                 feelsLike = it.feelsLike,
                 humidity = it.humidity,
                 pressure = it.pressure,
-                sunrise = it.sunrise,
-                sunset = it.sunset,
                 temp = it.temp.toInt(),
-                uvi = it.uvi,
-                visibility = it.visibility,
                 weather = it.weather.map(::transformToWeatherDetailResponseModel),
-                windDeg = it.windDeg,
-                windGust = it.windGust,
                 windSpeed = it.windSpeed
             )
         }

@@ -16,14 +16,8 @@ data class CurrentModel(
     val feelsLike: Double = 0.0,
     val humidity: Int = 0,
     val pressure: Int = 0,
-    val sunrise: Int = 0,
-    val sunset: Int = 0,
     val temp: Int = 0,
-    val uvi: Double = 0.0,
-    val visibility: Int = 0,
     val weather: List<WeatherDetailModel> = listOf(),
-    val windDeg: Int = 0,
-    val windGust: Double = 0.0,
     val windSpeed: Double = 0.0
 )
 
