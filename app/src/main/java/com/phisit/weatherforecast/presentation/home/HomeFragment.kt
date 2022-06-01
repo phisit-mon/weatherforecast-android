@@ -1,5 +1,6 @@
 package com.phisit.weatherforecast.presentation.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -82,6 +83,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setWeatherToView(current: CurrentModel) {
         val tempUnit = binding.toggleTemp.checkedButtonId.let {
             if (it == binding.celsiusButton.id) "C" else "F"

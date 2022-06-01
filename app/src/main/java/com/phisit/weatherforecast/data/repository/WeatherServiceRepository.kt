@@ -5,10 +5,7 @@ import com.phisit.weatherforecast.common.core.exception.NetworkThrowable
 import com.phisit.weatherforecast.common.core.exception.errorType
 import com.phisit.weatherforecast.data.api.WeatherServiceInterface
 import com.phisit.weatherforecast.data.response.*
-import com.phisit.weatherforecast.domain.model.CurrentModel
-import com.phisit.weatherforecast.domain.model.GeocodingModel
-import com.phisit.weatherforecast.domain.model.WeatherDetailModel
-import com.phisit.weatherforecast.domain.model.WeatherModel
+import com.phisit.weatherforecast.domain.model.*
 import com.phisit.weatherforecast.domain.repository.WeatherServiceRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -94,7 +91,8 @@ class WeatherServiceRepositoryImpl(
                         lat = data.lat,
                         lon = data.lon,
                         timezone = data.timezone,
-                        timezoneOffset = data.timezoneOffset
+                        timezoneOffset = data.timezoneOffset,
+                        daily = transformToDomainDailyModel(data.daily)
                     ).run {
                         Success(this)
                     }
@@ -135,6 +133,22 @@ class WeatherServiceRepositoryImpl(
                 icon = it.icon,
                 id = it.id,
                 main = it.main
+            )
+        }
+    }
+
+    private fun transformToDomainDailyModel(dailyList: List<DailyResponseModel>): DailyModel? {
+        return dailyList.firstOrNull()?.let {
+            DailyModel(
+                dewPoint = it.dewPoint,
+                humidity = it.humidity,
+                windSpeed = it.windSpeed,
+                feelsLike = FeelsLikeModel(
+                    day = it.feelsLike.day,
+                    eve = it.feelsLike.eve,
+                    morn = it.feelsLike.morn,
+                    night = it.feelsLike.night
+                )
             )
         }
     }
