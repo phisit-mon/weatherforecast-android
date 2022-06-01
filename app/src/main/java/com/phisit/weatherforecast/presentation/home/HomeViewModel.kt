@@ -7,6 +7,7 @@ import com.phisit.weatherforecast.common.core.coroutine.CoroutineDispatcherProvi
 import com.phisit.weatherforecast.data.response.Failure
 import com.phisit.weatherforecast.data.response.Success
 import com.phisit.weatherforecast.domain.model.CurrentModel
+import com.phisit.weatherforecast.domain.model.DailyModel
 import com.phisit.weatherforecast.domain.model.GeocodingModel
 import com.phisit.weatherforecast.domain.usecase.GetForecastWeatherUseCase
 import com.phisit.weatherforecast.domain.usecase.GetGeocodingUseCase
@@ -27,8 +28,8 @@ class HomeViewModel(
 
     private val geocodingLiveData: MutableLiveData<GeocodingModel> = MutableLiveData()
     private val weatherLiveData: MutableLiveData<CurrentModel> = MutableLiveData()
+    private val dailyWeatherLiveData: MutableLiveData<DailyModel> = MutableLiveData()
 
-    @VisibleForTesting
     var unitsOfTemp = Constants.TEMP_UNIT_C
         private set
 
@@ -37,6 +38,7 @@ class HomeViewModel(
 
     fun getGeocodingLiveData(): LiveData<GeocodingModel> = geocodingLiveData
     fun getWeatherLiveData(): LiveData<CurrentModel> = weatherLiveData
+    fun getDailyWeatherLiveData(): LiveData<DailyModel> = dailyWeatherLiveData
 
     val forecastWeatherTrigger = Transformations.map(geocodingLiveData) { geoCoding ->
         getForecastWeather(geoCoding.lat, geoCoding.lon)
@@ -62,7 +64,7 @@ class HomeViewModel(
             lat = lat,
             lon = lon,
             unitsOfTemp = unitsOfTemp,
-            typeOfWeather = Constants.CURRENT_WEATHER
+            typeOfWeather = Constants.DAILY_WEATHER
         ).flowOn(coroutineDispatcherProvider.io())
             .catch { error ->
                 emit(Failure(error))
@@ -71,6 +73,9 @@ class HomeViewModel(
                     is Success -> {
                         result.data.current?.let {
                             weatherLiveData.value = it
+                        }
+                        result.data.daily?.let {
+                            dailyWeatherLiveData.value = it
                         }
                     }
                     is Failure -> Unit

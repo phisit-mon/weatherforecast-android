@@ -1,7 +1,5 @@
 package com.phisit.weatherforecast.domain.model
 
-import com.phisit.weatherforecast.data.response.WeatherDetailResponseModel
-
 data class WeatherModel(
     val current: CurrentModel? = null,
     val lat: Double = 0.0,
@@ -42,13 +40,13 @@ data class DailyModel(
     val dt: Int = 0,
     val feelsLike: FeelsLikeModel = FeelsLikeModel(),
     val humidity: Int = 0,
-    val weather: List<WeatherDetailResponseModel> = listOf(),
+    val weather: List<WeatherDetailModel> = listOf(),
     val windSpeed: Double = 0.0
 )
 
 data class FeelsLikeModel(
-    val day: Double = 0.0,
-    val eve: Double = 0.0,
-    val morn: Double = 0.0,
-    val night: Double = 0.0
+    val day: Int = 0,
+    val eve: Int = 0,
+    val morn: Int = 0,
+    val night: Int = 0
 )

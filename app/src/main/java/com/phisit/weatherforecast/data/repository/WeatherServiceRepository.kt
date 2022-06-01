@@ -143,11 +143,12 @@ class WeatherServiceRepositoryImpl(
                 dewPoint = it.dewPoint,
                 humidity = it.humidity,
                 windSpeed = it.windSpeed,
+                weather = it.weather.map(::transformToWeatherDetailResponseModel),
                 feelsLike = FeelsLikeModel(
-                    day = it.feelsLike.day,
-                    eve = it.feelsLike.eve,
-                    morn = it.feelsLike.morn,
-                    night = it.feelsLike.night
+                    day = it.feelsLike.day.toInt(),
+                    eve = it.feelsLike.eve.toInt(),
+                    morn = it.feelsLike.morn.toInt(),
+                    night = it.feelsLike.night.toInt()
                 )
             )
         }

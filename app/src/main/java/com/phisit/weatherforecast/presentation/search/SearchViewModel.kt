@@ -27,7 +27,6 @@ class SearchViewModel(
             }.onEach { result ->
                 when (result) {
                     is Success -> {
-                        Timber.e("getGeocodingList : ${result.data}")
                         geocodingLiveData.value = result.data
                     }
                     else -> Unit

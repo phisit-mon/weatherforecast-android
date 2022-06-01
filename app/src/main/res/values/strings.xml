@@ -6,4 +6,11 @@
     <string name="precipitation">Precipitation</string>
     <string name="humidity">Humidity</string>
     <string name="windy">Windy</string>
+    <string name="now">Now</string>
+    <string name="today">Today</string>
+    <string name="day">Day</string>
+    <string name="morning">Morning</string>
+    <string name="evening">Evening</string>
+    <string name="night">Night</string>
+    <string name="search_hint">Enter city name</string>
 </resources>

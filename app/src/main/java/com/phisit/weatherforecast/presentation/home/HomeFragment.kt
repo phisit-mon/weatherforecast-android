@@ -17,7 +17,7 @@ import com.phisit.weatherforecast.databinding.LayoutInfoGroupViewBinding
 import com.phisit.weatherforecast.databinding.LayoutWetherGroupViewBinding
 import com.phisit.weatherforecast.domain.model.CurrentModel
 import com.phisit.weatherforecast.domain.model.GeocodingModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -27,7 +27,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val infoViewGroup: LayoutInfoGroupViewBinding
         get() = binding.weatherViewGroup.infoViewGroup
 
-    private val viewModel: HomeViewModel by viewModel()
+    private val viewModel: HomeViewModel by sharedViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,6 +100,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             infoViewGroup.windTextView.text = windSpeed.toKiloMeter()
             weatherViewGroup.feelingTextView.text = weather.firstOrNull()?.description.orEmpty()
             weatherViewGroup.tempTextView.text = temp.toString() + tempUnit
+            weatherViewGroup.dateTextView.text = getString(R.string.now)
         }
     }
 }
