@@ -5,10 +5,7 @@ import com.phisit.weatherforecast.common.core.exception.NetworkThrowable
 import com.phisit.weatherforecast.common.core.exception.errorType
 import com.phisit.weatherforecast.data.api.WeatherServiceInterface
 import com.phisit.weatherforecast.data.response.*
-import com.phisit.weatherforecast.domain.model.CurrentModel
-import com.phisit.weatherforecast.domain.model.GeocodingModel
-import com.phisit.weatherforecast.domain.model.WeatherDetailModel
-import com.phisit.weatherforecast.domain.model.WeatherModel
+import com.phisit.weatherforecast.domain.model.*
 import com.phisit.weatherforecast.domain.repository.WeatherServiceRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -94,7 +91,8 @@ class WeatherServiceRepositoryImpl(
                         lat = data.lat,
                         lon = data.lon,
                         timezone = data.timezone,
-                        timezoneOffset = data.timezoneOffset
+                        timezoneOffset = data.timezoneOffset,
+                        daily = transformToDomainDailyModel(data.daily)
                     ).run {
                         Success(this)
                     }
@@ -108,14 +106,14 @@ class WeatherServiceRepositoryImpl(
         return current?.let { it ->
             CurrentModel(
                 clouds = it.clouds,
-                dewPoint = it.dewPoint,
+                dewPoint = it.dewPoint.toInt(),
                 dt = it.dt,
                 feelsLike = it.feelsLike,
                 humidity = it.humidity,
                 pressure = it.pressure,
                 sunrise = it.sunrise,
                 sunset = it.sunset,
-                temp = it.temp,
+                temp = it.temp.toInt(),
                 uvi = it.uvi,
                 visibility = it.visibility,
                 weather = it.weather.map(::transformToWeatherDetailResponseModel),
@@ -135,6 +133,23 @@ class WeatherServiceRepositoryImpl(
                 icon = it.icon,
                 id = it.id,
                 main = it.main
+            )
+        }
+    }
+
+    private fun transformToDomainDailyModel(dailyList: List<DailyResponseModel>): DailyModel? {
+        return dailyList.firstOrNull()?.let {
+            DailyModel(
+                dewPoint = it.dewPoint,
+                humidity = it.humidity,
+                windSpeed = it.windSpeed,
+                weather = it.weather.map(::transformToWeatherDetailResponseModel),
+                feelsLike = FeelsLikeModel(
+                    day = it.feelsLike.day.toInt(),
+                    eve = it.feelsLike.eve.toInt(),
+                    morn = it.feelsLike.morn.toInt(),
+                    night = it.feelsLike.night.toInt()
+                )
             )
         }
     }
