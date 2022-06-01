@@ -2,10 +2,7 @@ package com.phisit.weatherforecast.data.response
 
 import com.google.gson.annotations.SerializedName
 
-
-class GeocodingResponseModel : ArrayList<GeocodingResponseModelItem>()
-
-data class GeocodingResponseModelItem(
+data class GeocodingResponseModel(
     @SerializedName("country")
     val country: String = "",
     @SerializedName("lat")

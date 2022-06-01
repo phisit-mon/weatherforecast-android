@@ -1,8 +1,8 @@
-package com.phisit.weatherforecast
+package com.phisit.weatherforecast.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.phisit.weatherforecast.common.core.viewInflateBinding
+import com.phisit.weatherforecast.common.core.view.viewInflateBinding
 import com.phisit.weatherforecast.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
