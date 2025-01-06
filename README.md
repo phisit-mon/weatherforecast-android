@@ -22,6 +22,7 @@ Users can see how the current or daily forecasts weather are, and search elsewhe
 - **Coroutines**
 - **Retrofit and OkHttp**
 - **Mockk**
+- **Koin**
 
 
 Run the command  ‘./gradlew test’ to see the unit test results
