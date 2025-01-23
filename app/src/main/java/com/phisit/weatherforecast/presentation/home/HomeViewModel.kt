@@ -40,7 +40,7 @@ class HomeViewModel(
     fun getWeatherLiveData(): LiveData<CurrentModel> = weatherLiveData
     fun getDailyWeatherLiveData(): LiveData<DailyModel> = dailyWeatherLiveData
 
-    val forecastWeatherTrigger = Transformations.map(geocodingLiveData) { geoCoding ->
+    val forecastWeatherTrigger = geocodingLiveData.map { geoCoding ->
         getForecastWeather(geoCoding.lat, geoCoding.lon)
     }
 

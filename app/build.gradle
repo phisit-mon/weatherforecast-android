@@ -4,12 +4,13 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.phisit.weatherforecast"
+        namespace "com.phisit.weatherforecast"
         minSdk 21
-        targetSdk 32
+        targetSdk 35
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -43,23 +44,25 @@ android {
             it.useJUnitPlatform()
         }
     }
+
+    android.buildFeatures.buildConfig true
 }
 
 dependencies {
-    def nav_version = "2.4.2"
-    def lifecycle_version = "2.4.1"
-    def arch_version = "2.1.0"
-    def activity_version = "1.4.0"
-    def koin_version = "3.2.0"
+    def nav_version = "2.8.5"
+    def lifecycle_version = "2.8.7"
+    def arch_version = "2.2.0"
+    def activity_version = "1.10.0"
+    def koin_version = "3.5.6"
     def multidex_version = "2.0.1"
-    def coroutine_version = "1.6.2"
+    def coroutine_version = "1.7.3"
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
     implementation "androidx.multidex:multidex:$multidex_version"
 
